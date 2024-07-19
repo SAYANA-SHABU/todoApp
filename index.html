@@ -1,0 +1,202 @@
+<!--Login-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</head>
+    <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background: #4a304d;
+    background-image: url(cover.png);
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+}
+
+.login-box {
+    position: relative;
+    width: 400px;
+    height: 580px;
+    background: #56385a;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    margin-top: 12px;
+}
+
+.login {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background-color:#310a36;
+    border-top: 5px solid rgba(255, 255, 255, .5); 
+    border-bottom: 5px solid rgba(255, 255, 255, .5); 
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(15px);
+    margin-top: 12px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-box {
+    width: 310px;
+    margin: 30px 0;
+    border-bottom: 2px solid #fff;
+    position: relative;
+}
+
+.input-box label {
+    position: absolute;
+    top: -5px;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 35px 0 5px;
+}
+
+
+.remember-forgot {
+    margin: 15px 0 15px;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    margin-right: 3px;
+}
+
+.remember-forgot a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px; 
+    cursor: pointer;
+    font-size: 1em;
+    color: #000;
+    font-weight: 500;
+}
+
+.register-link {
+    font-size: .9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register-link p a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 360px) {
+    .login-box {
+        width: 100%;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+    .input-box {
+        width: 290px;
+    }
+} 
+
+    </style>
+    
+    
+</head>
+
+<body>
+    <section>
+        <div class="login">
+            <form>
+                <h2 class="box">Login</h2>
+                <div class="input-box">
+                    
+                    <input type="text" id="mail" placeholder="Enter your username">
+                    <label>Username</label>
+                    <span id="bug"></span>
+                </div>
+                <div class="input-box">
+                    
+                    <input type="password" id="passwords" placeholder="Enter your password">
+                    <label>Password</label>
+                    <span id="bug1"></span>
+                </div>
+                 <div class="remember-forgot">
+                    <a href="#">Forgot Password?</a>
+                </div> 
+                <h4 style="text-align: center; color: rgb(255, 255, 255);margin-bottom: 10px;">or</h4>
+                <img  src="android_neutral_rd_SU@1x.png" onclick="openGoogleSignIn()" style="padding-left: 60px;margin-bottom: 10px;">
+                <button type="submit" onclick="return validateLogin(event)">Login</button>
+            </form>
+        </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="loginValidation.js"></script>
+</body>
+
+</html>

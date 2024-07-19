@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        #h {
+            font-family: "Wittgenstein", serif;
+            font-optical-sizing: auto;
+            font-weight: normal;
+            font-style: normal;
+            color: black;
+            
+        }
+
+        #nav {
+            font-size: 22px;
+            font-family: "Wittgenstein", serif;
+            font-optical-sizing: auto;
+            font-weight: normal;
+            font-style: normal;
+            background-color: none;
+        }
+
+        #he {
+            font-family: "Playwrite PE", cursive;
+            font-optical-sizing: auto;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;1,500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Barlow", sans-serif;
+            background-color: #6163b2;
+            background: linear-gradient(to right, #240b36, #5b5096);
+            color: #343a40;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            width: 70%;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 15px;
+            border: 10px solid rgb(22, 18, 22);
+            box-shadow: 0 0 10px rgba(248, 247, 247, 0.1);
+            background: #3f0a53;
+            background: -webkit-linear-gradient(to right, #33001b, #300a51);
+            background: linear-gradient(to right, #33001b, #460659);
+        }
+
+        .head1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: hsl(209, 51%, 9%);
+            border-right: 1px solid antiquewhite;
+            border-left: 1px solid antiquewhite;
+            background-color: antiquewhite;
+            padding: 10px;
+            font-family: Goudy Stout;
+        }
+
+        .head2 {
+            color: #c7ccd1;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            color: antiquewhite;
+        }
+
+        .todo-list {
+            list-style-type: none;
+            padding: 0;
+            color: antiquewhite;
+            font-family: "Elephant", serif;
+        }
+
+        .todo-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(1.5);
+        }
+
+        label {
+            margin-left: 18px;
+            font-size: x-large;
+            flex-grow: 1;
+        }
+
+        @media screen and (max-width: 576px) {
+            .container {
+                width: 95%;
+            }
+
+            input[type="checkbox"] {
+                transform: scale(1.1);
+            }
+        }
+
+        @media screen and (min-width: 577px) and (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            input[type="checkbox"] {
+                transform: scale(1.2);
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .welcome-message {
+            text-align: center;
+            font-family: "Elephant", serif;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <nav id="navb" class="navbar navbar-expand-lg" style="background-color: #cebabc;">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="h" href="#" style="font-size: x-large;">TODO</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" style="font-size: x-large;">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="myTodoLink" style="color: black; border-right: 1px solid black;">My Todo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="homeLink" style="color: black;">Home</a>
+                    </li>
+                    <li class="nav-item" style="font-size: 24px; border-left: 1px solid black; padding-left: 6px;">
+                        <a class="nav-link" href="#" onclick="confirmLogout()" style="color: black;">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="heading welcome-message" id="welcomeMessage">Welcome to our Todo Application <br>"Success is not final, failure is not fatal: It is the courage to continue that counts."</h1>
+
+    <div class="container hidden" id="todoContainer">
+        <h1 class="head1">Today's Tasks</h1>
+        <ul id="todoList" class="todo-list"></ul>
+    </div>
+
+    <script>
+        function retrieveTasks() {
+            return fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json());
+        }
+
+        function displayTasks(tasks) {
+            const todoList = document.getElementById('todoList');
+            let completedTaskCount = 0;
+
+            tasks.forEach(task => {
+                const listItem = document.createElement('li');
+
+                const label = document.createElement('label');
+                label.textContent = task.title;
+                label.htmlFor = `task-${task.id}`;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `task-${task.id}`;
+                checkbox.checked = false;
+
+                listItem.appendChild(label);
+                listItem.appendChild(checkbox);
+
+                todoList.appendChild(listItem);
+
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        completedTaskCount++;
+                        checkbox.disabled = true;
+                    } else {
+                        completedTaskCount--;
+                        checkbox.disabled = false;
+                    }
+
+                    if (completedTaskCount % 5 === 0) {
+                        alert(`Congrats. ${completedTaskCount} Tasks have been Successfully Completed`);
+                    }
+                });
+            });
+        }
+
+        function main() {
+            retrieveTasks()
+                .then(displayTasks)
+                .catch(error => console.error('Error retrieving tasks:', error));
+        }
+
+        function confirmLogout() {
+            if (confirm("Are you sure you want to logout?")) {
+                window.location.href = "index.html";
+            } else {
+                return;
+            }
+        }
+
+        document.getElementById('myTodoLink').addEventListener('click', () => {
+            document.getElementById('welcomeMessage').classList.add('hidden');
+            document.getElementById('todoContainer').classList.remove('hidden');
+            main();
+        });
+
+        document.getElementById('homeLink').addEventListener('click', () => {
+            document.getElementById('welcomeMessage').classList.remove('hidden');
+            document.getElementById('todoContainer').classList.add('hidden');
+        });
+
+        main();
+    </script>
+</body>
+
+</html>
